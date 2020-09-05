@@ -15,8 +15,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server": "^2.17.0",
     "compression": "^1.7.4",
-    "express": "^4.17.1",
+    "graphql": "^15.3.0",
     "helmet": "^3.23.3",
     "tsc": "^1.20150623.0"
   },

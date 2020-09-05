@@ -1,20 +1,25 @@
-import express, { Request, Response } from 'express';
-import compression from 'compression';
-import helmet from 'helmet';
+import { ApolloServer, gql } from 'apollo-server';
 
-const app: express.Application = express();
+// The GraphQL schema
+const typeDefs = gql`
+  type Query {
+    "A simple type for getting started!"
+    hello: String
+  }
+`;
 
-app.get('/', (req: Request, res: Response) =>
-  res.send('Hello World from app.ts! Awesome!!')
-);
+// A map of functions which return data for the schema.
+const resolvers = {
+  Query: {
+    hello: () => 'world',
+  },
+};
 
-app.use(helmet());
-app.use(compression());
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-app.disable('x-powered-by');
-
-const server = app.listen(3000, () =>
-  console.log('Starting ExpressJS server on Port 3000')
-);
-
-export default server;
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
