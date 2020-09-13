@@ -1,13 +1,24 @@
 import { ApolloServer } from 'apollo-server';
 import resolvers from './graphql/resolvers';
 import typeDefinitions from './graphql/typeDefinitions';
+import connectDatabase from './database';
 
-const server = new ApolloServer({
-  resolvers,
-  typeDefs: typeDefinitions,
-});
+export default async () => {
+  try {
+    await connectDatabase();
+    console.log('Database connected successfull!');
+  }
+  catch (error) {
+    console.error(`Database connection failed: ${error.message}`);
+    process.exit(1);
+  }
 
-export default () =>
-  server.listen().then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
+  const server = new ApolloServer({
+    resolvers,
+    typeDefs: typeDefinitions
   });
+  
+  server.listen().then(({ url }) => {
+    console.log(`Server ready at ${url}`);
+  });
+};
