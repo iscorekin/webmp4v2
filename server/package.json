@@ -20,6 +20,7 @@
     "dotenv": "^8.2.0",
     "graphql": "^15.3.0",
     "helmet": "^3.23.3",
+    "mongoose": "^5.10.5",
     "tsc": "^1.20150623.0"
   },
   "devDependencies": {
