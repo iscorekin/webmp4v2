@@ -10,13 +10,14 @@
     "serve": "node dist/server.js",
     "start": "npm run serve",
     "test": "jest",
-    "watch": "ts-node-dev --respawn -- src/server.ts"
+    "watch": "ts-node-dev --respawn -- src/index.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.17.0",
     "compression": "^1.7.4",
+    "dotenv": "^8.2.0",
     "graphql": "^15.3.0",
     "helmet": "^3.23.3",
     "tsc": "^1.20150623.0"

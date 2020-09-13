@@ -20,6 +20,8 @@ const server = new ApolloServer({
   resolvers,
 });
 
-server.listen().then(({ url }) => {
+console.log(process.env);
+
+export default () => server.listen().then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
