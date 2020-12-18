@@ -4,7 +4,7 @@ import {
   DB_USER,
   DB_PASSWORD,
   DB_NAME,
-} from '../constants/config';
+} from '../constants/configs/database';
 
 const connectDatabase = async () => {
   mongoose.Promise = global.Promise;
